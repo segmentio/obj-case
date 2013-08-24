@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "nbubna/Case"
+    "nbubna/Case": "*"
   },
   "development": {},
   "license": "MIT",
