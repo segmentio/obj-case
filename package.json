@@ -19,7 +19,7 @@
   "author": "Segmentio",
   "license": "MIT",
   "dependencies": {
-    "case": "git://github.com/calvinfo/Case"
+    "case": "~1.0.3"
   },
   "devDependencies": {
     "mocha": "~1.12.0",
