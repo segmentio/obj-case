@@ -27,7 +27,8 @@
 
   ```javascript
   var obj = { 'a wild' : { mouse : { APPEARED : true }}};
-  objCase.del(obj, 'aWild.mouse.appeared');  // { 'a wild' : { mouse : {} }}
+  objCase.del(obj, 'aWild.mouse.appeared');
+  console.log(obj); // { 'a wild' : { mouse : {} }}
   ```
 
 
@@ -38,7 +39,7 @@
   ```javascript
   var obj = { replacing : { keys : 'is the best' }};
   objCase.replace(obj, 'replacing.keys', 'is just okay');
-  // { replacing : { keys : 'is just okay' }}
+  console.log(obj) // { replacing : { keys : 'is just okay' }}
   ```
 
 
