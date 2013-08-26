@@ -15,6 +15,11 @@ describe('obj-case', function () {
       objCase({ 'A bird' : { 'flew_under' : { 'theTrain' : 4 }}},
               'aBird.FLEW UNDER.the train').should.eql(4);
     });
+
+    it('should find falsey keys', function () {
+      objCase({ a : { b : false }}, 'a.b').should.eql(false);
+      objCase({ a : { b : 0 }}, 'a.b').should.eql(0);
+    });
   });
 
 
