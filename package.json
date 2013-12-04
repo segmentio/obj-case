@@ -1,6 +1,6 @@
 {
   "name": "obj-case",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Work with objects of different cased keys",
   "main": "index.js",
   "scripts": {
