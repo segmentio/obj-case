@@ -15,4 +15,7 @@ node_modules: package.json
 clean:
 	rm -fr build components template.js
 
-.PHONY: clean test
+test-browser: build
+	@open test/index.html
+
+.PHONY: clean test test-browser

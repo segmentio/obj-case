@@ -5,9 +5,13 @@
   "version": "0.0.2",
   "keywords": [],
   "dependencies": {
-    "nbubna/Case": "*"
+    "yields/case": "*"
   },
-  "development": {},
+  "development": {
+    "visionmedia/mocha-matrix": "*",
+    "visionmedia/mocha": "*",
+    "component/assert": "*"
+  },
   "license": "MIT",
   "main": "index.js",
   "scripts": [
