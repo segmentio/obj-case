@@ -4,6 +4,14 @@ var should  = require('should')
 describe('obj-case', function () {
 
   describe('.find()', function () {
+    it('should be a function', function () {
+      objCase.find.should.be.a.Function;
+    });
+
+    it('should be the main export', function () {
+      objCase.find.should.eql(objCase);
+    });
+
     it('should find simple keys', function () {
       objCase({ a : 'b' }, 'a').should.eql('b');
       objCase({ first_name : 'Calvin' }, 'firstName').should.eql('Calvin');
