@@ -1,24 +1,26 @@
-var should  = require('should')
-  , objCase = require('..');
 
 describe('obj-case', function () {
 
+  var expect  = require('expect.js')
+    , objCase = require('..');
+
   describe('.find()', function () {
     it('should find simple keys', function () {
-      objCase({ a : 'b' }, 'a').should.eql('b');
-      objCase({ first_name : 'Calvin' }, 'firstName').should.eql('Calvin');
-      objCase({ 'first name' : 'Calvin' }, 'first_name').should.eql('Calvin');
+      expect(objCase({ a : 'b' }, 'a')).to.eql('b');
+      expect(objCase({ first_name : 'Calvin' }, 'firstName')).to.eql('Calvin');
+      expect(objCase({ 'first name' : 'Calvin' }, 'first_name')).to.eql('Calvin');
     });
 
     it('should find nested keys', function () {
-      objCase({ a : { b : { c : 'd' }}}, 'a.b.c').should.eql('d');
-      objCase({ 'A bird' : { 'flew_under' : { 'theTrain' : 4 }}},
-              'aBird.FLEW UNDER.the train').should.eql(4);
+      expect(objCase({ a : { b : { c : 'd' }}}, 'a.b.c')).to.eql('d');
+      expect(objCase({ 'A bird': { flew_under: { theTrain: 4 } } }, 'a bird.flew_under.the_train')).to.eql(4);
     });
 
     it('should find falsey keys', function () {
-      objCase({ a : { b : false }}, 'a.b').should.eql(false);
-      objCase({ a : { b : 0 }}, 'a.b').should.eql(0);
+      expect(objCase({ a : { b : false }}, 'a.b')).to.eql(false);
+      expect(objCase({ a : { b : 0 }}, 'a.b')).to.eql(0);
+      // .should.eql(false);
+      // objCase({ a : { b : 0 }}, 'a.b').should.eql(0);
     });
   });
 
@@ -26,12 +28,11 @@ describe('obj-case', function () {
   describe('.del()', function () {
     it('should delete simple keys', function () {
       var obj = { firstName : 'Calvin', lastName : 'French-Owen' };
-      objCase.del(obj, 'first name').should.eql({ 'lastName' : 'French-Owen' });
+      expect(objCase.del(obj, 'first name')).to.eql({ lastName: 'French-Owen' });
     });
 
     it('should delete nested keys', function () {
-      objCase.del({ 'A bird' : { 'flew_under' : { 'theTrain' : 4 }}},
-                   'aBird.FLEW UNDER').should.eql({ 'A bird' : {}});
+      expect(objCase.del({ 'A bird' : { 'flew_under' : { 'theTrain' : 4 }}}, 'aBird.FLEW UNDER')).to.eql({ 'A bird': {} });
     });
    });
 
@@ -39,7 +40,7 @@ describe('obj-case', function () {
   describe('.replace()', function () {
     it('should replace simple keys', function () {
       var obj = { firstName : 'Calvin', lastName : 'French-Owen' };
-      objCase.replace(obj, 'last name', 'Harris').should.eql({
+      expect(objCase.replace(obj, 'last name', 'Harris')).to.eql({
         firstName : 'Calvin',
         lastName  : 'Harris'
       });
@@ -47,7 +48,7 @@ describe('obj-case', function () {
 
     it('should replace nested keys', function () {
       var obj = { "Calvin" : { dog : 'teddy' }};
-      objCase.replace(obj, "Calvin.dog", 'the tedster').should.eql({
+      expect(objCase.replace(obj, "Calvin.dog", 'the tedster')).to.eql({
         "Calvin" : { dog : 'the tedster' }
       });
     });
