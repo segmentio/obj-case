@@ -19,8 +19,6 @@ describe('obj-case', function () {
     it('should find falsey keys', function () {
       expect(objCase({ a : { b : false }}, 'a.b')).to.eql(false);
       expect(objCase({ a : { b : 0 }}, 'a.b')).to.eql(0);
-      // .should.eql(false);
-      // objCase({ a : { b : 0 }}, 'a.b').should.eql(0);
     });
   });
 
