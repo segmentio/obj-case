@@ -6,7 +6,7 @@ var cases = [
   Case.upper,
   Case.lower,
   Case.snake,
-  Case.squish,
+  Case.pascal,
   Case.camel,
   Case.constant,
   Case.title,
