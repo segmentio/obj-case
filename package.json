@@ -1,6 +1,6 @@
 {
   "name": "obj-case",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Work with objects of different cased keys",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "author": "Segmentio",
   "license": "MIT",
   "dependencies": {
-    "case": "~1.0.3"
+    "case": "git+https://github.com/ianstormtaylor/case#0.1.1"
   },
   "devDependencies": {
     "mocha": "~1.12.0",
