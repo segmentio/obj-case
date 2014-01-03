@@ -3,6 +3,8 @@
 
   Work with objects of different cased keys. Anything supported by [nbubna/Case](https://github.com/nbubna/Case). Makes finding and editing objects between languages a little more forgiving while still not modifying the original JSON.
 
+  [![Build Status](https://travis-ci.org/segmentio/obj-case.png?branch=master)](https://travis-ci.org/segmentio/facade)
+
 ## Installation
 
   Install with [component(1)](http://component.io):
