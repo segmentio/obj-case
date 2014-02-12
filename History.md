@@ -1,4 +1,11 @@
 
+0.0.6 / 2014-02-11
+==================
+
+ * use proper case dep
+ * add travis.yml
+ * fix `test` target
+
 0.0.5 / 2013-12-19
 ==================
 
