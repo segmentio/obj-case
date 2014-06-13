@@ -1,8 +1,14 @@
 
 var Case = require('case');
+var identity = function(_){ return _; };
 
+
+/**
+ * Cases
+ */
 
 var cases = [
+  identity,
   Case.upper,
   Case.lower,
   Case.snake,
