@@ -20,6 +20,10 @@ describe('obj-case', function () {
       expect(objCase({ a : { b : false }}, 'a.b')).to.eql(false);
       expect(objCase({ a : { b : 0 }}, 'a.b')).to.eql(0);
     });
+
+    it('should find non-uniform cased keys', function () {
+      expect(objCase({ camel_Case: true }, 'camel_Case')).to.eql(true);
+    });
   });
 
 
