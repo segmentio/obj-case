@@ -24,8 +24,39 @@ describe('obj-case', function () {
     it('should find non-uniform cased keys', function () {
       expect(objCase({ camel_Case: true }, 'camel_Case')).to.eql(true);
     });
-  });
 
+    it('should find dot-separated paths as object key', function () {
+      var obj = { 'a.b': 10 };
+      expect(objCase(obj, 'a.b')).to.eql(10);
+    });
+
+    it('should find dot-separated paths in a nested object', function () {
+      var obj = { a: { 'b.c': 10 } };
+      expect(objCase(obj, 'a.b.c')).to.eql(10);
+    });
+
+    describe('casing', function(){
+      it('should find crazy looking paths', function () {
+        var obj = { a: { 'HelloWorld.BAR': 10 } };
+        expect(objCase(obj, 'A.HELLO_WORLD.bar')).to.eql(10);
+      });
+
+      it('should find crazy looking paths 2', function () {
+        var obj = { 'HELLO_WORLD.a.B': 10 };
+        expect(objCase(obj, 'helloWorld.a.B')).to.eql(10);
+      });
+
+      it('should find crazy looking paths 3', function () {
+        var obj = { 'some-crazy.PROBABLY_POSSIBLE.NestedProperty': 10 };
+        expect(objCase(obj, 'SOME_CRAZY.ProbablyPossible.nested_property')).to.eql(10);
+      });
+
+      it('should work without finding a match', function () {
+        var obj = { 'some-crazy.PROBABLY_MISSPELLED.NestedProperty': 10 };
+        expect(objCase(obj, 'SOME_CRAZY.ProbablyMssplld.nested_property')).to.eql(10);
+      });
+    });
+  });
 
   describe('.del()', function () {
     it('should delete simple keys', function () {

@@ -53,18 +53,60 @@ module.exports.del = function (obj, key) {
  */
 
 function multiple (fn) {
-  return function (obj, key, val) {
-    var keys = key.split('.');
-    if (keys.length === 0) return;
+  return function (obj, path, val) {
+    // A.HELLO_WORLD.bar => a.hello_world.bar
+    path = normalize(path);
 
-    while (keys.length > 1) {
-      key = keys.shift();
-      obj = find(obj, key);
+    var key;
+    var finished = false;
 
-      if (obj === null || obj === undefined) return;
+    while (!finished) loop();
+
+    function loop() {
+      for (key in obj) {
+        // a.HelloWorld.BAR => a.hello_world.bar
+        var normalizedKey = normalize(key);
+        if (0 === path.indexOf(normalizedKey)) {
+          path = path.substr(normalizedKey.length + 1);
+          var child = obj[key];
+
+          // we're at the end and there is nothing.
+          if (null == child) {
+            finished = true;
+            obj = null;
+            return;
+          }
+
+          // we're at the end and there is something.
+          if (!path.length) {
+            finished = true;
+            return;
+          }
+
+          // step into child
+          obj = child;
+
+          // but we're done here
+          return;
+        }
+      }
+
+      // if we found no matching properties
+      // on the current object, there's no match.
+      finished = true;
     }
 
-    key = keys.shift();
+    function normalize(x) {
+      return x.split('.').map(function(part){
+        return Case.camel(part);
+      }).join('.');
+    }
+
+    // the `obj` and `key` is one above the leaf object and key, so
+    // start object: { a: { 'b.c': 10 } }
+    // end object: { 'b.c': 10 }
+    // end key: 'b.c'
+    // this way, you can do `obj[key]` and get `10`.
     return fn(obj, key, val);
   };
 }
