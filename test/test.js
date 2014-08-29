@@ -86,4 +86,13 @@ describe('obj-case', function () {
       });
     });
   });
+
+  describe('performance', function(){
+    it('should be performant', function(){
+      var obj = { a: { 'HelloWorld.BAR': 10 } };
+      for (var i = 0, n = 100000; i < n; i++) {
+        objCase(obj, 'A.HELLO_WORLD.bar'); 
+      }
+    });
+  });
 });
