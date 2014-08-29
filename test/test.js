@@ -89,9 +89,9 @@ describe('obj-case', function () {
 
   describe('performance', function(){
     it('should be performant', function(){
-      var obj = { a: { 'HelloWorld.BAR': 10 } };
+      var obj = { 'A bird': { flew_under: { theTrain: 4 } } };
       for (var i = 0, n = 100000; i < n; i++) {
-        objCase(obj, 'A.HELLO_WORLD.bar'); 
+        objCase(obj, 'a bird.flew_under.the_train');
       }
     });
   });
