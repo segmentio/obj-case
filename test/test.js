@@ -65,6 +65,12 @@ describe('obj-case', function () {
       };
       expect(objCase(obj2, 'website')).to.eql('aaaa');
       expect(objCase(obj2, 'websites')).to.eql('bbbb');
+
+      var obj4 = {
+        websites: 'bbbb'
+      };
+      expect(objCase(obj4, 'website')).to.eql(undefined);
+      expect(objCase(obj4, 'websites')).to.eql('bbbb');
     });
 
     describe('casing', function(){
@@ -83,9 +89,9 @@ describe('obj-case', function () {
         expect(objCase(obj, 'SOME_CRAZY.ProbablyPossible.nested_property')).to.eql(10);
       });
 
-      it('should work without finding a match', function () {
+      it('should return undefined if it doesnt find a match', function () {
         var obj = { 'some-crazy.PROBABLY_MISSPELLED.NestedProperty': 10 };
-        expect(objCase(obj, 'SOME_CRAZY.ProbablyMssplld.nested_property')).to.eql(10);
+        expect(objCase(obj, 'SOME_CRAZY.ProbablyMssplld.nested_property')).to.eql(undefined);
       });
     });
   });

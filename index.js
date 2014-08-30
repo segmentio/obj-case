@@ -92,6 +92,7 @@ function multiple (fn) {
         }
       }
 
+      key = undefined;
       // if we found no matching properties
       // on the current object, there's no match.
       finished = true;
