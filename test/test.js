@@ -35,6 +35,11 @@ describe('obj-case', function () {
       expect(objCase(obj, 'a.b.c')).to.eql(10);
     });
 
+    it('should work on blank objects', function () {
+      var obj = {};
+      expect(objCase(obj, 'a.b.c')).to.eql(undefined);
+    });
+
     describe('casing', function(){
       it('should find crazy looking paths', function () {
         var obj = { a: { 'HelloWorld.BAR': 10 } };
