@@ -1,4 +1,20 @@
 
+0.0.8 / 2014-08-29
+==================
+
+ * add performance test, getting 100000/1800 = 55ops/ms
+ * refactor to iterate in reverse, so we can handle dots in key names
+
+0.0.8 / 2014-08-29
+==================
+
+ * Merge pull request #4 from segmentio/support/nested-dots
+ * move comment to normalize
+ * move out normalize method
+ * add performance test, getting 100000/1800 = 55ops/ms
+ * add performance test, getting 100000/1120 = 90ops/ms = 90000ops/sec
+ * refactor to iterate in reverse, so we can handle dots in key names
+
 0.0.7 / 2014-06-12
 ==================
 
