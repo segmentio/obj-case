@@ -96,12 +96,6 @@ function multiple (fn) {
       finished = true;
     }
 
-    function normalize(x) {
-      return x.split('.').map(function(part){
-        return Case.camel(part);
-      }).join('.');
-    }
-
     // the `obj` and `key` is one above the leaf object and key, so
     // start object: { a: { 'b.c': 10 } }
     // end object: { 'b.c': 10 }
@@ -153,4 +147,17 @@ function replace (obj, key, val) {
     if (obj.hasOwnProperty(cased)) obj[cased] = val;
   }
   return obj;
+}
+
+/**
+ * Normalize a `dot.separated.path`.
+ *
+ * @param {String} path
+ * @return {String}
+ */
+
+function normalize(path) {
+  return path.split('.').map(function(part){
+    return Case.camel(part);
+  }).join('.');
 }
