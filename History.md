@@ -1,4 +1,10 @@
 
+0.0.11 / 2014-08-30
+===================
+
+  * Merge pull request #7 from segmentio/fix/bug
+  * fix edge case for facade
+
 0.0.10 / 2014-08-30
 ===================
 
