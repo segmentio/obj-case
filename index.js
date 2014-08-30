@@ -65,27 +65,30 @@ function multiple (fn) {
       for (key in obj) {
         var normalizedKey = normalize(key);
         if (0 === path.indexOf(normalizedKey)) {
-          path = path.substr(normalizedKey.length + 1);
-          var child = obj[key];
+          var temp = path.substr(normalizedKey.length);
+          if (temp.charAt(0) === '.' || temp.length === 0) {
+            path = temp.substr(1);
+            var child = obj[key];
 
-          // we're at the end and there is nothing.
-          if (null == child) {
-            finished = true;
-            obj = null;
+            // we're at the end and there is nothing.
+            if (null == child) {
+              finished = true;
+              obj = null;
+              return;
+            }
+
+            // we're at the end and there is something.
+            if (!path.length) {
+              finished = true;
+              return;
+            }
+
+            // step into child
+            obj = child;
+
+            // but we're done here
             return;
           }
-
-          // we're at the end and there is something.
-          if (!path.length) {
-            finished = true;
-            return;
-          }
-
-          // step into child
-          obj = child;
-
-          // but we're done here
-          return;
         }
       }
 

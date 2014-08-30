@@ -40,6 +40,33 @@ describe('obj-case', function () {
       expect(objCase(obj, 'a.b.c')).to.eql(undefined);
     });
 
+    it('should work with properties with same prefix', function () {
+      var obj3 = {
+        website: {
+          left: 'aaaa'
+        },
+        websites: {
+          right: 'bbbb'
+        }
+      };
+      expect(objCase(obj3, 'website.left')).to.eql('aaaa');
+      expect(objCase(obj3, 'websites.right')).to.eql('bbbb');
+
+      var obj1 = {
+        website: 'aaaa',
+        websites: 'bbbb'
+      };
+      expect(objCase(obj1, 'website')).to.eql('aaaa');
+      expect(objCase(obj1, 'websites')).to.eql('bbbb');
+
+      var obj2 = {
+        websites: 'bbbb',
+        website: 'aaaa'
+      };
+      expect(objCase(obj2, 'website')).to.eql('aaaa');
+      expect(objCase(obj2, 'websites')).to.eql('bbbb');
+    });
+
     describe('casing', function(){
       it('should find crazy looking paths', function () {
         var obj = { a: { 'HelloWorld.BAR': 10 } };
