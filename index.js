@@ -94,6 +94,8 @@ function multiple (fn) {
       finished = true;
     }
 
+    if (!key) return;
+
     // the `obj` and `key` is one above the leaf object and key, so
     // start object: { a: { 'b.c': 10 } }
     // end object: { 'b.c': 10 }
