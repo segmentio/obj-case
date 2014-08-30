@@ -1,4 +1,10 @@
 
+0.0.9 / 2014-08-30
+==================
+
+  * Merge pull request #5 from segmentio/fix/test
+  * work on blank objects
+
 0.0.8 / 2014-08-29
 ==================
 
