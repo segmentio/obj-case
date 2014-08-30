@@ -54,7 +54,6 @@ module.exports.del = function (obj, key) {
 
 function multiple (fn) {
   return function (obj, path, val) {
-    // A.HELLO_WORLD.bar => a.hello_world.bar
     path = normalize(path);
 
     var key;
@@ -64,7 +63,6 @@ function multiple (fn) {
 
     function loop() {
       for (key in obj) {
-        // a.HelloWorld.BAR => a.hello_world.bar
         var normalizedKey = normalize(key);
         if (0 === path.indexOf(normalizedKey)) {
           path = path.substr(normalizedKey.length + 1);
@@ -151,6 +149,8 @@ function replace (obj, key, val) {
 
 /**
  * Normalize a `dot.separated.path`.
+ * 
+ * A.HELLO_WORLD.bar => a.hello_world.bar
  *
  * @param {String} path
  * @return {String}
