@@ -1,4 +1,10 @@
 
+0.0.10 / 2014-08-30
+===================
+
+  * Merge pull request #6 from segmentio/fix/shared-prefix
+  * adding more tests for an edge case we didnt consider
+
 0.0.9 / 2014-08-30
 ==================
 
