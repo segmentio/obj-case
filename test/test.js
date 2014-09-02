@@ -84,6 +84,11 @@ describe('obj-case', function () {
         expect(objCase(obj, 'helloWorld.a.B')).to.eql(10);
       });
 
+      it('should treat camel-cased same as lowercase', function () {
+        var obj = { 'woodyallen': 10 };
+        expect(objCase(obj, 'woodyAllen')).to.eql(10);
+      });
+
       it('should find crazy looking paths 3', function () {
         var obj = { 'some-crazy.PROBABLY_POSSIBLE.NestedProperty': 10 };
         expect(objCase(obj, 'SOME_CRAZY.ProbablyPossible.nested_property')).to.eql(10);

@@ -1,24 +1,5 @@
 
-var Case = require('case');
 var identity = function(_){ return _; };
-
-
-/**
- * Cases
- */
-
-var cases = [
-  identity,
-  Case.upper,
-  Case.lower,
-  Case.snake,
-  Case.pascal,
-  Case.camel,
-  Case.constant,
-  Case.title,
-  Case.capital,
-  Case.sentence
-];
 
 
 /**
@@ -117,10 +98,7 @@ function multiple (fn) {
  */
 
 function find (obj, key) {
-  for (var i = 0; i < cases.length; i++) {
-    var cased = cases[i](key);
-    if (obj.hasOwnProperty(cased)) return obj[cased];
-  }
+  if (obj.hasOwnProperty(key)) return obj[key];
 }
 
 
@@ -131,10 +109,7 @@ function find (obj, key) {
  */
 
 function del (obj, key) {
-  for (var i = 0; i < cases.length; i++) {
-    var cased = cases[i](key);
-    if (obj.hasOwnProperty(cased)) delete obj[cased];
-  }
+  if (obj.hasOwnProperty(key)) delete obj[key];
   return obj;
 }
 
@@ -146,24 +121,19 @@ function del (obj, key) {
  */
 
 function replace (obj, key, val) {
-  for (var i = 0; i < cases.length; i++) {
-    var cased = cases[i](key);
-    if (obj.hasOwnProperty(cased)) obj[cased] = val;
-  }
+  if (obj.hasOwnProperty(key)) obj[key] = val;
   return obj;
 }
 
 /**
  * Normalize a `dot.separated.path`.
  * 
- * A.HELLO_WORLD.bar => a.hello_world.bar
+ * A.HELLO_WORLD.bar => a.helloWorld.bar
  *
  * @param {String} path
  * @return {String}
  */
 
 function normalize(path) {
-  return path.split('.').map(function(part){
-    return Case.camel(part);
-  }).join('.');
+  return path.replace(/[^a-zA-Z0-9\.]+/g, '').toLowerCase();
 }
