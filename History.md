@@ -1,4 +1,9 @@
 
+0.1.0 / 2014-09-02
+==================
+
+ * moved to a standard normalization with only letters, numbers and dots
+
 0.0.11 / 2014-08-30
 ===================
 
