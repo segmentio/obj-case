@@ -128,7 +128,7 @@ function replace (obj, key, val) {
 /**
  * Normalize a `dot.separated.path`.
  * 
- * A.HELLO_WORLD.bar => a.helloWorld.bar
+ * A.HELL(!*&#(!)O_WOR   LD.bar => ahelloworldbar
  *
  * @param {String} path
  * @return {String}
