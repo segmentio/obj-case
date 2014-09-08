@@ -54,7 +54,6 @@ function multiple (fn) {
             // we're at the end and there is nothing.
             if (null == child) {
               finished = true;
-              obj = null;
               return;
             }
 
@@ -80,6 +79,7 @@ function multiple (fn) {
     }
 
     if (!key) return;
+    if (null == obj) return obj;
 
     // the `obj` and `key` is one above the leaf object and key, so
     // start object: { a: { 'b.c': 10 } }

@@ -73,6 +73,16 @@ describe('obj-case', function () {
       expect(objCase(obj4, 'websites')).to.eql('bbbb');
     });
 
+    it('should work with a terminal value of null', function(){
+      var obj = { traits: { email: null } };
+      expect(objCase(obj, 'traits.email')).to.eql(null)
+    });
+
+    it('should work with a terminal value of undefined', function(){
+      var obj = { traits: { email: undefined } };
+      expect(objCase(obj, 'traits.email')).to.eql(undefined)
+    });
+
     describe('casing', function(){
       it('should find crazy looking paths', function () {
         var obj = { a: { 'HelloWorld.BAR': 10 } };
