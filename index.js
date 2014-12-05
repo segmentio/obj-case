@@ -13,8 +13,8 @@ module.exports = module.exports.find = multiple(find);
  * Export the replacement function, return the modified object
  */
 
-module.exports.replace = function (obj, key, val) {
-  multiple(replace).apply(this, arguments);
+module.exports.replace = function (obj, key, val, options) {
+  multiple(replace).call(this, obj, key, val, options);
   return obj;
 };
 
@@ -23,8 +23,8 @@ module.exports.replace = function (obj, key, val) {
  * Export the delete function, return the modified object
  */
 
-module.exports.del = function (obj, key) {
-  multiple(del).apply(this, arguments);
+module.exports.del = function (obj, key, options) {
+  multiple(del).call(this, obj, key, null, options);
   return obj;
 };
 
@@ -34,7 +34,8 @@ module.exports.del = function (obj, key) {
  */
 
 function multiple (fn) {
-  return function (obj, path, val) {
+  return function (obj, path, val, options) {
+    normalize = options && isFunction(options.normalizer) ? options.normalizer : defaultNormalize;
     path = normalize(path);
 
     var key;
@@ -127,13 +128,24 @@ function replace (obj, key, val) {
 
 /**
  * Normalize a `dot.separated.path`.
- * 
+ *
  * A.HELL(!*&#(!)O_WOR   LD.bar => ahelloworldbar
  *
  * @param {String} path
  * @return {String}
  */
 
-function normalize(path) {
+function defaultNormalize(path) {
   return path.replace(/[^a-zA-Z0-9\.]+/g, '').toLowerCase();
+}
+
+/**
+ * Check if a value is a function.
+ *
+ * @param {*} val
+ * @return {boolean} Returns `true` if `val` is a function, otherwise `false`.
+ */
+
+function isFunction(val) {
+  return typeof val === 'function';
 }
