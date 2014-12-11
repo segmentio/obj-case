@@ -6,7 +6,8 @@ var identity = function(_){ return _; };
  * Module exports, export
  */
 
-module.exports = module.exports.find = multiple(find);
+module.exports = multiple(find);
+module.exports.find = module.exports;
 
 
 /**

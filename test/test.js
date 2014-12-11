@@ -5,6 +5,14 @@ describe('obj-case', function () {
     , objCase = require('..');
 
   describe('.find()', function () {
+    it('should be a function', function () {
+      objCase.find.should.be.a.Function;
+    });
+
+    it('should be the main export', function () {
+      objCase.find.should.eql(objCase);
+    });
+
     it('should find simple keys', function () {
       expect(objCase({ a : 'b' }, 'a')).to.eql('b');
       expect(objCase({ first_name : 'Calvin' }, 'firstName')).to.eql('Calvin');
