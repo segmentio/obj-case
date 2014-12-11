@@ -23,7 +23,7 @@
   objCase.find(obj, 'my.superCool.CLIMBING SHOES');  // 'x'
   ```
 
-### .del(obj, key)
+### .del(obj, key, val, [options])
 
   Deletes a nested key
 
@@ -34,7 +34,7 @@
   ```
 
 
-### .replace(obj, key)
+### .replace(obj, key, val, [options])
 
   Replaces a nested key
 

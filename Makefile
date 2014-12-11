@@ -1,4 +1,6 @@
 
+GREP ?=.
+
 build: components index.js
 	@component build --dev
 
@@ -7,7 +9,8 @@ components: component.json
 
 test:
 	@node_modules/.bin/mocha \
-		--reporter spec
+		--reporter spec \
+		--grep "$(GREP)"
 
 node_modules: package.json
 	@npm install

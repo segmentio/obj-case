@@ -120,8 +120,21 @@ describe('obj-case', function () {
     it('should delete nested keys', function () {
       expect(objCase.del({ 'A bird' : { 'flew_under' : { 'theTrain' : 4 }}}, 'aBird.FLEW UNDER')).to.eql({ 'A bird': {} });
     });
-   });
 
+    it('should accept a custom key normalizer', function () {
+      var obj = { one: { a: { b: 'nested' } }, two: 'two' };
+      var normalize = function(path) {
+        return path.replace(/[x]/g, '');
+      };
+      var options = { normalizer: normalize };
+      var expected = {
+        one: { a: {} },
+        two: 'two'
+      };
+
+      expect(objCase.del(obj, 'xxonxe.xa.xxbxx', options)).to.eql(expected);
+    });
+  });
 
   describe('.replace()', function () {
     it('should replace simple keys', function () {
@@ -137,6 +150,20 @@ describe('obj-case', function () {
       expect(objCase.replace(obj, "Calvin.dog", 'the tedster')).to.eql({
         "Calvin" : { dog : 'the tedster' }
       });
+    });
+
+    it('should accept a custom key normalizer', function () {
+      var obj = { one: { a: { b: 'nested' } }, two: 'two' };
+      var normalize = function(path) {
+        return path.replace(/[x]/g, '');
+      };
+      var options = { normalizer: normalize };
+      var expected = {
+        one: { a: { b: 'newvalue' } },
+        two: 'two'
+      };
+
+      expect(objCase.replace(obj, 'xxonxe.xa.xxbxx', 'newvalue', options)).to.eql(expected);
     });
   });
 
