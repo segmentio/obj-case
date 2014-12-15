@@ -1,4 +1,10 @@
 
+0.2.0 / 2014-12-15
+==================
+
+  * Fix `find` export
+  * Allow user to pass `options` parameter, letting you customize the normalizer
+
 0.1.1 / 2014-09-09
 ==================
 
