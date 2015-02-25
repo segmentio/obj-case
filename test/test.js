@@ -4,7 +4,7 @@ describe('obj-case', function () {
   var expect  = require('expect.js')
     , objCase = require('..');
 
-  describe.only('.find()', function () {
+  describe('.find()', function () {
     it('should be a function', function () {
       expect(objCase.find).to.be.a.Function;
     });
