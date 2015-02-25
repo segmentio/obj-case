@@ -4,13 +4,13 @@ describe('obj-case', function () {
   var expect  = require('expect.js')
     , objCase = require('..');
 
-  describe('.find()', function () {
+  describe.only('.find()', function () {
     it('should be a function', function () {
-      objCase.find.should.be.a.Function;
+      expect(objCase.find).to.be.a.Function;
     });
 
     it('should be the main export', function () {
-      objCase.find.should.eql(objCase);
+      expect(objCase.find).to.be(objCase);
     });
 
     it('should find simple keys', function () {
