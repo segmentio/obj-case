@@ -36,7 +36,7 @@ module.exports.del = function (obj, key, options) {
 
 function multiple (fn) {
   return function (obj, path, val, options) {
-    normalize = options && isFunction(options.normalizer) ? options.normalizer : defaultNormalize;
+    var normalize = options && isFunction(options.normalizer) ? options.normalizer : defaultNormalize;
     path = normalize(path);
 
     var key;
