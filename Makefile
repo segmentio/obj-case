@@ -1,4 +1,5 @@
 
+include node_modules/make-lint/index.mk
 GREP ?=.
 
 build: components index.js
@@ -7,7 +8,7 @@ build: components index.js
 components: component.json
 	@component install --dev
 
-test:
+test: lint
 	@node_modules/.bin/mocha \
 		--reporter spec \
 		--grep "$(GREP)"
