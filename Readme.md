@@ -36,7 +36,7 @@
 
 ### .replace(obj, key, val, [options])
 
-  Replaces a nested key
+  Replaces a nested key's value
 
   ```javascript
   var obj = { replacing : { keys : 'is the best' }};
