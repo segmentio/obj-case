@@ -1,6 +1,9 @@
 
 # obj-case
 
+> **Note**  
+> Segment has paused maintenance on this project, but may return it to an active status in the future. Issues and pull requests from external contributors are not being considered, although internal contributions may appear from time to time. The project remains available under its open source license for anyone to use.
+
   Work with objects of different cased keys. Anything supported by [nbubna/Case](https://github.com/nbubna/Case). Makes finding and editing objects between languages a little more forgiving while still not modifying the original JSON.
 
   [![Build Status](https://travis-ci.org/segmentio/obj-case.png?branch=master)](https://travis-ci.org/segmentio/facade)
